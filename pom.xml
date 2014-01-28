@@ -143,20 +143,28 @@
                     </includes>
                 </configuration>
             </plugin>
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>cobertura-maven-plugin</artifactId>
+            <version>2.5.2</version>
+            <configuration>
+          <formats>
+            <format>xml</format>
+          </formats>
+                <instrumentation>
+                    <excludes>
+                        <exclude>*/*Test.class</exclude>
+                    </excludes>
+                </instrumentation>
+            </configuration>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>clean</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
         </plugins>
     </build>
-    <reporting>
-        <plugins>
-               <plugin>
-                 <groupId>org.codehaus.mojo</groupId>
-                 <artifactId>cobertura-maven-plugin</artifactId>
-                 <configuration>
-                   <formats>
-                     <format>html</format>
-                     <format>xml</format>
-                   </formats>
-                </configuration>
-            </plugin>
-        </plugins>
-  </reporting>
 </project>
