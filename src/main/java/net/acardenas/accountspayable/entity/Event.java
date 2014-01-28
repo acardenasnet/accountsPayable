@@ -1,5 +1,8 @@
 package net.acardenas.accountspayable.entity;
 
+import org.eclipse.persistence.internal.oxm.schema.model.All;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -13,7 +16,7 @@ public class Event
 {
     @Id
     private Integer id;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<AccountPayable> accountPayables;
 
     public Integer getId()
