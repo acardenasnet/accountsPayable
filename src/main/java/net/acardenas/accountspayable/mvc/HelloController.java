@@ -30,7 +30,7 @@ public class HelloController
     public String printList(ModelMap aModelMap)
     {
         LOG.debug("printList");
-        aModelMap.addAttribute("list", new ArrayList<String>());
+        aModelMap.addAttribute("list", eventDataservice.findWithNamedQuery("TEST"));
         return "eventView";
     }
 }

@@ -1,6 +1,5 @@
 package net.acardenas.accountspayable.dataservice.api;
 
-import net.acardenas.accountspayable.dataservice.api.DataserviceCrud;
 import net.acardenas.accountspayable.entity.Event;
 
 /**

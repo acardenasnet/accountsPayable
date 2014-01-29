@@ -11,4 +11,9 @@ public class EventDataserviceImpl
     implements EventDataservice
 {
 
+    @Override
+    public Class<Event> handles()
+    {
+        return Event.class;
+    }
 }
