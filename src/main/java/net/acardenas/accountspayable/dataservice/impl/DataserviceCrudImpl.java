@@ -1,6 +1,7 @@
 package net.acardenas.accountspayable.dataservice.impl;
 
 import net.acardenas.accountspayable.dataservice.api.DataserviceCrud;
+import net.acardenas.accountspayable.entity.Event;
 import net.acardenas.accountspayable.utils.Log;
 import org.slf4j.Logger;
 
@@ -59,7 +60,8 @@ public abstract class DataserviceCrudImpl<T, K>
     public List<T> findWithNamedQuery(String aNamedQueryName)
     {
         logger.debug("findWithNamedQuery");
-        return null;
+        logger.debug("{}", entityManager);
+        return entityManager.createNamedQuery(aNamedQueryName,handles()).getResultList();
     }
 
     @Override
