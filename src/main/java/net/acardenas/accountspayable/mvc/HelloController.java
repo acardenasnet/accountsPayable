@@ -1,6 +1,7 @@
 package net.acardenas.accountspayable.mvc;
 
 import net.acardenas.accountspayable.dataservice.api.EventDataservice;
+import net.acardenas.accountspayable.entity.Event;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class HelloController
     public String printList(ModelMap aModelMap)
     {
         LOG.debug("printList");
-        aModelMap.addAttribute("list", eventDataservice.findWithNamedQuery("TEST"));
+        aModelMap.addAttribute("list", eventDataservice.findWithNamedQuery(Event.ALL));
         return "eventView";
     }
 }

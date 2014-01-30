@@ -4,8 +4,10 @@ import net.acardenas.accountspayable.dataservice.api.DataserviceCrud;
 import net.acardenas.accountspayable.entity.Event;
 import net.acardenas.accountspayable.utils.Log;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 /**
@@ -16,8 +18,7 @@ public abstract class DataserviceCrudImpl<T, K>
 {
     private EntityManager entityManager;
 
-    @Log
-    Logger logger;
+    private Logger logger = LoggerFactory.getLogger(DataserviceCrud.class);
 
     public DataserviceCrudImpl()
     {
@@ -27,6 +28,14 @@ public abstract class DataserviceCrudImpl<T, K>
     public void setEntityManager(EntityManager aEntityManager)
     {
         entityManager = aEntityManager;
+        logger.debug("{}", aEntityManager);
+        logger.debug("{}", entityManager);
+    }
+
+    public EntityManager getEntityManager()
+    {
+        logger.debug("get EntityManager {}", entityManager);
+        return entityManager;
     }
 
     @Override
@@ -61,7 +70,8 @@ public abstract class DataserviceCrudImpl<T, K>
     {
         logger.debug("findWithNamedQuery");
         logger.debug("{}", entityManager);
-        return entityManager.createNamedQuery(aNamedQueryName,handles()).getResultList();
+        TypedQuery<T> myQuery = entityManager.createNamedQuery(aNamedQueryName, handles());
+        return myQuery.getResultList();
     }
 
     @Override

@@ -13,13 +13,13 @@ import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceUnit;
+import java.util.List;
 
 /**
  * Created by acardenas on 1/28/14.
  */
 @Repository
 public class EventDataserviceRepository
-    extends DataserviceCrudImpl<Event, Integer>
     implements EventDataservice
 {
     private EventDataservice delegate;
@@ -27,7 +27,7 @@ public class EventDataserviceRepository
     @Log
     Logger logger;
 
-    @Autowired
+    @PersistenceContext
     private EntityManager entityManager;
 
     @PostConstruct
@@ -35,7 +35,6 @@ public class EventDataserviceRepository
     {
         logger.debug("init");
         EventDataserviceImpl myEventDataservice = new EventDataserviceImpl();
-        logger.debug("{}", entityManager);
         myEventDataservice.setEntityManager(entityManager);
         delegate = myEventDataservice;
     }
@@ -45,4 +44,47 @@ public class EventDataserviceRepository
     {
         return delegate.handles();
     }
+
+    @Override
+    public Event create(Event anEntity)
+    {
+        return delegate.create(anEntity);
+    }
+
+    @Override
+    public Event find(Integer anId)
+    {
+        return delegate.find(anId);
+    }
+
+    @Override
+    public void delete(Integer anId)
+    {
+        delegate.delete(anId);
+    }
+
+    @Override
+    public Event update(Event anEntity)
+    {
+        return delegate.update(anEntity);
+    }
+
+    @Override
+    public List<Event> findWithNamedQuery(String aNamedQueryName)
+    {
+        return delegate.findWithNamedQuery(aNamedQueryName);
+    }
+
+    @Override
+    public List<Event> findWithNamedQuery(String aNamedQueryName, int aStart, int anEnd)
+    {
+        return delegate.findWithNamedQuery(aNamedQueryName, aStart, anEnd);
+    }
+
+    @Override
+    public int countTotalRecord(String aNamedQueryName)
+    {
+        return delegate.countTotalRecord(aNamedQueryName);
+    }
+
 }
