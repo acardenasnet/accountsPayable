@@ -1,9 +1,6 @@
 package net.acardenas.accountspayable.entity;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -13,6 +10,7 @@ import java.util.List;
 public class AccountPayable
 {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String name;
     private Double total;
@@ -22,5 +20,45 @@ public class AccountPayable
     public AccountPayable()
     {
 
+    }
+
+    public Integer getId()
+    {
+        return id;
+    }
+
+    public void setId(Integer id)
+    {
+        this.id = id;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    public Double getTotal()
+    {
+        return total;
+    }
+
+    public void setTotal(Double total)
+    {
+        this.total = total;
+    }
+
+    public List<Payment> getPayments()
+    {
+        return payments;
+    }
+
+    public void setPayments(List<Payment> payments)
+    {
+        this.payments = payments;
     }
 }

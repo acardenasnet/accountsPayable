@@ -22,6 +22,7 @@ public class Event
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    private String name;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<AccountPayable> accountPayables;
 
@@ -35,6 +36,16 @@ public class Event
         this.id = id;
     }
 
+    public String getName()
+    {
+        return name;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
     public List<AccountPayable> getAccountPayables()
     {
         return accountPayables;
@@ -43,5 +54,15 @@ public class Event
     public void setAccountPayables(List<AccountPayable> accountPayables)
     {
         this.accountPayables = accountPayables;
+    }
+
+    @Override
+    public String toString()
+    {
+        StringBuilder myStringBuilder = new StringBuilder();
+        myStringBuilder.append("[")
+                .append("Id = ").append(getId())
+                .append("Name = ").append(getName());
+        return super.toString();
     }
 }

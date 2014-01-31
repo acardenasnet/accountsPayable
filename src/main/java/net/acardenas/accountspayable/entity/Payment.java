@@ -13,6 +13,7 @@ public class Payment
     private Integer id;
     private String name;
     private String description;
+    private Double amount;
     @Temporal(TemporalType.TIMESTAMP)
     private Date effectiveDate;
     @ManyToOne()
@@ -46,6 +47,16 @@ public class Payment
     public void setDescription(String description)
     {
         this.description = description;
+    }
+
+    public Double getAmount()
+    {
+        return amount;
+    }
+
+    public void setAmount(Double amount)
+    {
+        this.amount = amount;
     }
 
     public Date getEffectiveDate()
