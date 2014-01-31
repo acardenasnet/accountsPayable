@@ -34,4 +34,14 @@ public class HelloController
         aModelMap.addAttribute("list", eventDataservice.findWithNamedQuery(Event.ALL));
         return "eventView";
     }
+
+    @RequestMapping(method = RequestMethod.GET, value = "create")
+    public String create(ModelMap aModelMap)
+    {
+        LOG.debug("createList");
+        Event myEvent = new Event();
+        eventDataservice.create(myEvent);
+        aModelMap.addAttribute("message", "OK");
+        return "hello";
+    }
 }

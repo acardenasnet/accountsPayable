@@ -20,6 +20,7 @@ public class Event
     public final static String TOTAL = "Event.countUsersTotal";
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<AccountPayable> accountPayables;
