@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by acardenas on 1/28/14.
  */
-public interfaces DataserviceCrud<T, K>
+public interface DataserviceCrud<T, K>
 {
     /**
      * Returns the type that is handled by this handler. This type is equal to
