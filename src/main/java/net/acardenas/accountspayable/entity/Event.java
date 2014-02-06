@@ -1,7 +1,5 @@
 package net.acardenas.accountspayable.entity;
 
-import org.eclipse.persistence.internal.oxm.schema.model.All;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -63,6 +61,6 @@ public class Event
         myStringBuilder.append("[")
                 .append("Id = ").append(getId())
                 .append("Name = ").append(getName());
-        return super.toString();
+        return myStringBuilder.toString();
     }
 }

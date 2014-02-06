@@ -13,7 +13,8 @@
 </head>
 <body>
     <c:forEach var="listValue" items="${list}">
-        <c:out value="${listValue}" />
+        <c:out value="${listValue}"  />
+        <br/>
     </c:forEach>
 </body>
 </html>

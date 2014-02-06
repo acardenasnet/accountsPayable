@@ -8,6 +8,7 @@ import net.acardenas.accountspayable.utils.Log;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
@@ -19,6 +20,7 @@ import java.util.List;
  * Created by acardenas on 1/28/14.
  */
 @Repository
+@Transactional
 public class EventDataserviceRepository
     implements EventDataservice
 {
@@ -86,5 +88,4 @@ public class EventDataserviceRepository
     {
         return delegate.countTotalRecord(aNamedQueryName);
     }
-
 }

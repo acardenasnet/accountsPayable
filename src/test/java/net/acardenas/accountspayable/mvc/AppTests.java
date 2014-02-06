@@ -37,6 +37,6 @@ public class AppTests
     {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("hello"));
+                .andExpect(view().name("login"));
     }
 }

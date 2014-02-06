@@ -24,7 +24,7 @@ public class HelloController
 	public String printWelcome(ModelMap model)
     {
 		model.addAttribute("message", "Hello world!");
-		return "hello";
+		return "login";
 	}
 
     @RequestMapping(method = RequestMethod.GET, value = "list")
@@ -40,6 +40,7 @@ public class HelloController
     {
         LOG.debug("createList");
         Event myEvent = new Event();
+        myEvent.setName("TEST" + System.currentTimeMillis());
         eventDataservice.create(myEvent);
         aModelMap.addAttribute("message", "OK");
         return "hello";
