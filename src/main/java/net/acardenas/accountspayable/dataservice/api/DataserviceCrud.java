@@ -63,12 +63,12 @@ public interface DataserviceCrud<T, K>
      * @param anEnd
      * @return List
      */
-    public List<T> findWithNamedQuery(String aNamedQueryName, int aStart, int anEnd);
+    List<T> findWithNamedQuery(String aNamedQueryName, int aStart, int anEnd);
 
     /**
      * Returns the number of total records
      * @param aNamedQueryName
      * @return int
      */
-    public int countTotalRecord(String aNamedQueryName);
+    int countTotalRecord(String aNamedQueryName);
 }

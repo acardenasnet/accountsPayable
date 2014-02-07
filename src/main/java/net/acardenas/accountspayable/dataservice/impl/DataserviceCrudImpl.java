@@ -50,19 +50,28 @@ public abstract class DataserviceCrudImpl<T, K>
     @Override
     public T find(K id)
     {
-        return null;
+        return entityManager.find(handles(), id);
     }
 
     @Override
     public void delete(K id)
     {
-
+        T myReference = entityManager.getReference(handles(), id);
+        entityManager.remove(myReference);
     }
 
     @Override
     public T update(T item)
     {
-        return null;
+//        if (item instanceof User)
+ //       {
+//            User user = (User) item;
+//            if (user.getId() == 1)
+ //           {
+ //               return item;
+  //          }
+ //       }
+        return (T) this.entityManager.merge(item);
     }
 
     @Override
