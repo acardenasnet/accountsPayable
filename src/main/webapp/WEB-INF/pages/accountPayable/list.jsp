@@ -12,18 +12,20 @@
     <title></title>
 </head>
 <body>
-<a href="<%=request.getContextPath()%>/event/add">Add</a>
+<a href="<%=request.getContextPath()%>/accountPayable/add">Add</a>
 <table>
     <tr>
-        <th>name</th>
+        <th>Name</th>
+        <th>Total</th>
         <th>Account Payable</th>
         <th>edit</th>
         <th>delete</th>
     </tr>
-    <c:forEach items="${events}" var="event">
+    <c:forEach items="${accountsPayable}" var="accountPayable">
         <tr>
-            <td>${event.name}</td>
-            <td><a href="<%=request.getContextPath()%>/accountPayable/${event.id}">accounts payable</a></td>
+            <td>${accountPayable.name}</td>
+            <td>${accountPayable.total}</td>
+            <td><a href="<%=request.getContextPath()%>/payment/${accountPayable.id}">accounts payable</a></td>
             <td><a href="<%=request.getContextPath()%>/event/edit/${event.id}">edit</a></td>
             <td><a href="<%=request.getContextPath()%>/event/delete/${event.id}">delete</a></td>
         </tr>

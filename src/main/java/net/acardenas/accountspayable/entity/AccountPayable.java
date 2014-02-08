@@ -7,8 +7,17 @@ import java.util.List;
  * Created by acardenas on 1/20/14.
  */
 @Entity
+@NamedQueries
+        ({
+                @NamedQuery(name = AccountPayable.ALL, query = "SELECT a FROM AccountPayable a"),
+                @NamedQuery(name = AccountPayable.TOTAL, query = "SELECT COUNT(a) FROM AccountPayable a")
+        })
 public class AccountPayable
 {
+    public final static String ALL = "AccountPayable.populateUsers";
+    public final static String TOTAL = "AccountPayable.countUsersTotal";
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;

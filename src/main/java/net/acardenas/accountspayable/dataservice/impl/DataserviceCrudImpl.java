@@ -32,12 +32,6 @@ public abstract class DataserviceCrudImpl<T, K>
         logger.debug("{}", entityManager);
     }
 
-    public EntityManager getEntityManager()
-    {
-        logger.debug("get EntityManager {}", entityManager);
-        return entityManager;
-    }
-
     @Override
     public T create(T t)
     {

@@ -23,7 +23,7 @@ public class EventController
     private static final Logger LOG = LoggerFactory.getLogger(EventController.class);
 
     @RequestMapping(method = RequestMethod.GET)
-    public String printList(ModelMap aModelMap)
+    public String listEvents(ModelMap aModelMap)
     {
         LOG.debug("printList");
         aModelMap.addAttribute("events", eventDataservice.findWithNamedQuery(Event.ALL));
@@ -31,21 +31,23 @@ public class EventController
     }
 
     @RequestMapping("add")
-    public String addToy(Map<String, Object> map) {
+    public String addEvent(Map<String, Object> map)
+    {
         Event myEvent = new Event();
         map.put("event", myEvent);
         return "event/edit";
     }
 
     @RequestMapping("edit/{eventId}")
-    public String editToy(@PathVariable("eventId") Integer eventId, Map<String, Object> map) {
+    public String editEvent(@PathVariable("eventId") Integer eventId, Map<String, Object> map)
+    {
         Event myEvent = eventDataservice.find(eventId);
         map.put("event", myEvent);
         return "event/edit";
     }
 
-    @RequestMapping("toys/save")
-    public String saveToy(@ModelAttribute("event") Event aEvent)
+    @RequestMapping("save")
+    public String saveEvent(@ModelAttribute("event") Event aEvent)
     {
         if (aEvent.getId() != null)
         {

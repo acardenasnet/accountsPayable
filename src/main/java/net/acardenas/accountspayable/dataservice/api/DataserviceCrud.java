@@ -47,14 +47,14 @@ public interface DataserviceCrud<T, K>
      * @param anEntity
      * @return the object that is updated
      */
-    public T update(T anEntity);
+    T update(T anEntity);
 
     /**
      * Returns the number of records that meet the criteria
      * @param aNamedQueryName
      * @return List
      */
-    public List<T> findWithNamedQuery(String aNamedQueryName);
+    List<T> findWithNamedQuery(String aNamedQueryName);
 
     /**
      * Returns the number of records that will be used with lazy loading / pagination
