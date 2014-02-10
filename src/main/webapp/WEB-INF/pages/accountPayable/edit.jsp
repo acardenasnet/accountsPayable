@@ -7,13 +7,13 @@
 </head>
 <body>
 <c:set var="path" value="<%=request.getContextPath()%>"></c:set>
-<form:form action="${path}/accountPayable/save" commandName="accountPayable">
+<form:form action="${path}/accountPayable/save/1" commandName="accountPayable">
     <form:hidden path="id" />
     <table>
         <tr>
             <td><form:label path="name">name</form:label></td>
             <td><form:input path="name" /></td>
-            <td><form:label path="Total">name</form:label></td>
+            <td><form:label path="Total">Total</form:label></td>
             <td><form:input path="total" /></td>
         </tr>
     </table>

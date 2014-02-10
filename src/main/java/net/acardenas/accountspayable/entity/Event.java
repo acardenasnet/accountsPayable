@@ -1,6 +1,11 @@
 package net.acardenas.accountspayable.entity;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,26 +18,15 @@ import java.util.List;
                 @NamedQuery(name = Event.TOTAL, query = "SELECT COUNT(e) FROM Event e")
         })
 public class Event
+    extends BaseEntity
 {
     public final static String ALL = "Event.populateUsers";
     public final static String TOTAL = "Event.countUsersTotal";
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
     private String name;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany
+    @JoinColumn(name = "EVENT_ID")
     private List<AccountPayable> accountPayables;
-
-    public Integer getId()
-    {
-        return id;
-    }
-
-    public void setId(Integer id)
-    {
-        this.id = id;
-    }
 
     public String getName()
     {
@@ -46,6 +40,10 @@ public class Event
 
     public List<AccountPayable> getAccountPayables()
     {
+        if (accountPayables == null)
+        {
+            accountPayables = new ArrayList<AccountPayable>();
+        }
         return accountPayables;
     }
 
@@ -60,7 +58,8 @@ public class Event
         StringBuilder myStringBuilder = new StringBuilder();
         myStringBuilder.append("[")
                 .append("Id = ").append(getId())
-                .append("Name = ").append(getName());
+                .append("Name = ").append(getName())
+                .append("]");
         return myStringBuilder.toString();
     }
 }

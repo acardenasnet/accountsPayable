@@ -1,6 +1,7 @@
 package net.acardenas.accountspayable.mvc;
 
 import net.acardenas.accountspayable.dataservice.api.AccountPayableDataservice;
+import net.acardenas.accountspayable.dataservice.api.EventDataservice;
 import net.acardenas.accountspayable.entity.AccountPayable;
 import net.acardenas.accountspayable.entity.Event;
 import org.slf4j.Logger;
@@ -11,7 +12,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.Map;
 
@@ -24,13 +24,17 @@ public class AccountsPayableController
 {
     @Autowired
     private AccountPayableDataservice accountPayableDataservice;
+
+    @Autowired
+    private EventDataservice eventDataservice;
+
     private static final Logger LOG = LoggerFactory.getLogger(AccountsPayableController.class);
 
     @RequestMapping("{eventId}")
-    public String listEvents(@PathVariable("eventId") Integer eventId, ModelMap aModelMap)
+    public String listAccountsPayable(@PathVariable("eventId") Integer eventId, ModelMap aModelMap)
     {
         LOG.debug("printList");
-        aModelMap.addAttribute("events", accountPayableDataservice.findWithNamedQuery(AccountPayable.ALL));
+        aModelMap.addAttribute("accountsPayable", accountPayableDataservice.findWithNamedQuery(AccountPayable.ALL));
         return "accountPayable/list";
     }
 
@@ -42,17 +46,22 @@ public class AccountsPayableController
         return "accountPayable/edit";
     }
 
-    @RequestMapping("edit/{eventId}")
-    public String editEvent(@PathVariable("eventId") Integer eventId, Map<String, Object> map)
+    @RequestMapping("edit/{accountPayableId}")
+    public String editEvent(@PathVariable("accountPayableId") Integer anAccountPayableId, Map<String, Object> map)
     {
-        AccountPayable myAccountPayable = accountPayableDataservice.find(eventId);
+        AccountPayable myAccountPayable = accountPayableDataservice.find(anAccountPayableId);
         map.put("accountPayable", myAccountPayable);
         return "accountPayable/edit";
     }
 
-    @RequestMapping("save")
-    public String saveEvent(@ModelAttribute("accountPayable") AccountPayable anAccountPayable)
+    @RequestMapping("save/{eventId}")
+    public String saveAccountPayable(@PathVariable("eventId") Integer anEventId,
+                            @ModelAttribute("accountPayable") AccountPayable anAccountPayable)
     {
+        LOG.debug("saveAccountPayable");
+        Event myEvent = eventDataservice.find(anEventId);
+        myEvent.getAccountPayables().add(anAccountPayable);
+
         if (anAccountPayable.getId() != null)
         {
             accountPayableDataservice.update(anAccountPayable);
@@ -61,14 +70,16 @@ public class AccountsPayableController
         {
             accountPayableDataservice.create(anAccountPayable);
         }
-        return "redirect:/accountPayable";
+
+        eventDataservice.update(myEvent);
+        LOG.debug("redirect account {}", anAccountPayable);
+        return "redirect:/accountPayable/" + anEventId;
     }
 
-    @RequestMapping("delete/{eventId}")
-    public String deleteEvent(@PathVariable("eventId") Integer eventId)
+    @RequestMapping("delete/{accountPayableId}")
+    public String deleteAccountPayable(@PathVariable("accountPayableId") Integer anAccountPayableId)
     {
-        accountPayableDataservice.delete(eventId);
+        accountPayableDataservice.delete(anAccountPayableId);
         return "redirect:/accountPayable";
     }
-
 }

@@ -47,37 +47,39 @@ public class AccountPayableDataserviceRepository
     @Override
     public AccountPayable create(AccountPayable anEntity)
     {
+        logger.debug("create account {}", anEntity);
         return delegate.create(anEntity);
     }
 
     @Override
     public AccountPayable find(Integer anId)
     {
-        return null;
+        return delegate.find(anId);
     }
 
     @Override
     public void delete(Integer anId)
     {
-
+        delegate.delete(anId);
     }
 
     @Override
     public AccountPayable update(AccountPayable anEntity)
     {
-        return null;
+        return delegate.update(anEntity);
     }
 
     @Override
     public List<AccountPayable> findWithNamedQuery(String aNamedQueryName)
     {
-        return null;
+        logger.debug("{}", delegate.findWithNamedQuery(aNamedQueryName));
+        return delegate.findWithNamedQuery(aNamedQueryName);
     }
 
     @Override
     public List<AccountPayable> findWithNamedQuery(String aNamedQueryName, int aStart, int anEnd)
     {
-        return null;
+        return delegate.findWithNamedQuery(aNamedQueryName, aStart, anEnd);
     }
 
     @Override

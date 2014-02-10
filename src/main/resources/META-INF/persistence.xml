@@ -3,5 +3,8 @@
 
     <persistence-unit name="accountsPayablePU">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <properties>
+            <property name="eclipselink.logging.level" value="FINE" />
+        </properties>
     </persistence-unit>
 </persistence>

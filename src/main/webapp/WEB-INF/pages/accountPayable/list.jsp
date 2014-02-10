@@ -25,9 +25,9 @@
         <tr>
             <td>${accountPayable.name}</td>
             <td>${accountPayable.total}</td>
-            <td><a href="<%=request.getContextPath()%>/payment/${accountPayable.id}">accounts payable</a></td>
-            <td><a href="<%=request.getContextPath()%>/event/edit/${event.id}">edit</a></td>
-            <td><a href="<%=request.getContextPath()%>/event/delete/${event.id}">delete</a></td>
+            <td><a href="<%=request.getContextPath()%>/payment/${accountPayable.id}">Payments</a></td>
+            <td><a href="<%=request.getContextPath()%>/accountPayable/edit/${accountPayable.id}">edit</a></td>
+            <td><a href="<%=request.getContextPath()%>/accountPayable/delete/${accountPayable.id}">delete</a></td>
         </tr>
     </c:forEach>
 </table>

@@ -35,9 +35,11 @@ public abstract class DataserviceCrudImpl<T, K>
     @Override
     public T create(T t)
     {
+        logger.debug("create {}", handles());
         this.entityManager.persist(t);
         this.entityManager.flush();
         this.entityManager.refresh(t);
+        logger.debug("End create {}", handles());
         return t;
     }
 
