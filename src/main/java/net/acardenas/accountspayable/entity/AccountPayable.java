@@ -12,7 +12,6 @@
 
 package net.acardenas.accountspayable.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -36,7 +35,7 @@ public class AccountPayable
 
     private String name;
     private Double total;
-    @OneToMany(mappedBy = "accountPayable", orphanRemoval = true, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "accountPayable")
     private List<Payment> payments;
 
     public AccountPayable()

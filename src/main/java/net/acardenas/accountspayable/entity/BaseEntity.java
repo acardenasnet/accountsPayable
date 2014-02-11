@@ -51,11 +51,7 @@ public abstract class BaseEntity implements Serializable
     @Override
     public boolean equals(Object obj)
     {
-        if (obj == null)
-        {
-            return false;
-        }
-        else if (!(obj instanceof BaseEntity))
+        if (obj == null || !(obj instanceof BaseEntity))
         {
             return false;
         }

@@ -1,10 +1,6 @@
 package net.acardenas.accountspayable.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -19,7 +15,8 @@ public class Payment
     private Double amount;
     @Temporal(TemporalType.TIMESTAMP)
     private Date effectiveDate;
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ACCOUNTPAYABLE_ID")
     private AccountPayable accountPayable;
 
     public String getName()
