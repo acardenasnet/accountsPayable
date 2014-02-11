@@ -47,7 +47,9 @@ public class AccountsPayableController
     }
 
     @RequestMapping("edit/{accountPayableId}")
-    public String editEvent(@PathVariable("accountPayableId") Integer anAccountPayableId, Map<String, Object> map)
+    public String editAccountPayable(
+            @PathVariable("accountPayableId") Integer anAccountPayableId,
+            Map<String, Object> map)
     {
         AccountPayable myAccountPayable = accountPayableDataservice.find(anAccountPayableId);
         map.put("accountPayable", myAccountPayable);
@@ -80,6 +82,6 @@ public class AccountsPayableController
     public String deleteAccountPayable(@PathVariable("accountPayableId") Integer anAccountPayableId)
     {
         accountPayableDataservice.delete(anAccountPayableId);
-        return "redirect:/accountPayable";
+        return "redirect:/accountPayable/1";
     }
 }

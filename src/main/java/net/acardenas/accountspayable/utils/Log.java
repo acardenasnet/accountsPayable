@@ -13,7 +13,10 @@ import java.lang.reflect.Field;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 @Documented
-public @interface Log { }
+public @interface Log
+{
+    // empty
+}
 
 /** LoggerPostProcessor => Custom Spring BeanPostProcessor **/
 class LoggerPostProcessor implements BeanPostProcessor
@@ -26,7 +29,8 @@ class LoggerPostProcessor implements BeanPostProcessor
     }
 
     public Object postProcessBeforeInitialization(final Object bean, String beanName)
-            throws BeansException {
+            throws BeansException
+    {
         ReflectionUtils.doWithFields(bean.getClass(), new ReflectionUtils.FieldCallback()
         {
             @SuppressWarnings("unchecked")
