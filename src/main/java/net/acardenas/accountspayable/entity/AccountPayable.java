@@ -48,9 +48,9 @@ public class AccountPayable
         return name;
     }
 
-    public void setName(String name)
+    public void setName(String aName)
     {
-        this.name = name;
+        name = aName;
     }
 
     public Double getTotal()
@@ -58,9 +58,9 @@ public class AccountPayable
         return total;
     }
 
-    public void setTotal(Double total)
+    public void setTotal(Double aTotal)
     {
-        this.total = total;
+        total = aTotal;
     }
 
     public List<Payment> getPayments()
@@ -68,9 +68,9 @@ public class AccountPayable
         return payments;
     }
 
-    public void setPayments(List<Payment> payments)
+    public void setPayments(List<Payment> aPayments)
     {
-        this.payments = payments;
+        payments = aPayments;
     }
 
 }
