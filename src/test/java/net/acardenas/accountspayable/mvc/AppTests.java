@@ -39,4 +39,12 @@ public class AppTests
                 .andExpect(status().isOk())
                 .andExpect(view().name("login"));
     }
+
+    @Test
+    public void eventList() throws Exception
+    {
+        mockMvc.perform(get("/event"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("event/event"));
+    }
 }
