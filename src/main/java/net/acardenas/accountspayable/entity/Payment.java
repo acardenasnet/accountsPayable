@@ -19,6 +19,11 @@ public class Payment
     @JoinColumn(name = "ACCOUNTPAYABLE_ID")
     private AccountPayable accountPayable;
 
+    public Payment()
+    {
+        // empty
+    }
+
     public String getName()
     {
         return name;
