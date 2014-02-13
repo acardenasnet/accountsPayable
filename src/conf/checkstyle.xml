@@ -1,4 +1,18 @@
 <?xml version="1.0"?>
+<!--
+  ~ ---------------------------------------------------------------------------
+  ~  COPYRIGHT Alejandro Cardenas, acardenas.net, Saltillo,Coah, MX 2014.
+  ~  All rights reserved.
+  ~
+  ~  The Copyright to the computer program(s) herein is the property of
+  ~  Alejandro Raul Cardenas
+  ~  The program(s) may be used and/or copied only with the written
+  ~  permission from Alejandro Cardenas, or in
+  ~  accordance with the terms and conditions stipulated in the
+  ~  agreement/contract under which the program(s) have been supplied.
+  ~  ---------------------------------------------------------------------------
+  -->
+
 <!DOCTYPE module PUBLIC
     "-//Puppy Crawl//DTD Check Configuration 1.2//EN"
     "http://www.puppycrawl.com/dtds/configuration_1_2.dtd">

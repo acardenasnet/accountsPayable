@@ -1,3 +1,17 @@
+<!--
+  ~ ---------------------------------------------------------------------------
+  ~  COPYRIGHT Alejandro Cardenas, acardenas.net, Saltillo,Coah, MX 2014.
+  ~  All rights reserved.
+  ~
+  ~  The Copyright to the computer program(s) herein is the property of
+  ~  Alejandro Raul Cardenas
+  ~  The program(s) may be used and/or copied only with the written
+  ~  permission from Alejandro Cardenas, or in
+  ~  accordance with the terms and conditions stipulated in the
+  ~  agreement/contract under which the program(s) have been supplied.
+  ~  ---------------------------------------------------------------------------
+  -->
+
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -7,9 +21,7 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/tx
-        http://www.springframework.org/schema/tx/spring-tx.xsd
-                   http://www.springframework.org/schema/security
-           http://www.springframework.org/schema/security/spring-security.xsd">
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <context:component-scan base-package="net.acardenas.accountspayable.mvc,
         net.acardenas.accountspayable.dataservice.service"/>

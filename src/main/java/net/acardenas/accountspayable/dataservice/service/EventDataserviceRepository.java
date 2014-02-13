@@ -1,19 +1,30 @@
+/*
+ * ---------------------------------------------------------------------------
+ *  COPYRIGHT Alejandro Cardenas, acardenas.net, Saltillo,Coah, MX 2014.
+ *  All rights reserved.
+ *
+ *  The Copyright to the computer program(s) herein is the property of
+ *  Alejandro Raul Cardenas
+ *  The program(s) may be used and/or copied only with the written
+ *  permission from Alejandro Cardenas, or in
+ *  accordance with the terms and conditions stipulated in the
+ *  agreement/contract under which the program(s) have been supplied.
+ *  ---------------------------------------------------------------------------
+ */
+
 package net.acardenas.accountspayable.dataservice.service;
 
 import net.acardenas.accountspayable.dataservice.api.EventDataservice;
-import net.acardenas.accountspayable.dataservice.impl.DataserviceCrudImpl;
 import net.acardenas.accountspayable.dataservice.impl.EventDataserviceImpl;
 import net.acardenas.accountspayable.entity.Event;
 import net.acardenas.accountspayable.utils.Log;
 import org.slf4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceUnit;
 import java.util.List;
 
 /**

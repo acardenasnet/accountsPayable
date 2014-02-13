@@ -1,3 +1,17 @@
+/*
+ * ---------------------------------------------------------------------------
+ *  COPYRIGHT Alejandro Cardenas, acardenas.net, Saltillo,Coah, MX 2014.
+ *  All rights reserved.
+ *
+ *  The Copyright to the computer program(s) herein is the property of
+ *  Alejandro Raul Cardenas
+ *  The program(s) may be used and/or copied only with the written
+ *  permission from Alejandro Cardenas, or in
+ *  accordance with the terms and conditions stipulated in the
+ *  agreement/contract under which the program(s) have been supplied.
+ *  ---------------------------------------------------------------------------
+ */
+
 package net.acardenas.accountspayable.utils;
 
 import org.slf4j.Logger;
@@ -6,7 +20,11 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.util.ReflectionUtils;
 
-import java.lang.annotation.*;
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 import java.lang.reflect.Field;
 
 /** Custom @Logger annotation **/
