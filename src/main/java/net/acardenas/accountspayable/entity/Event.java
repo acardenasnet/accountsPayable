@@ -1,3 +1,15 @@
+// ---------------------------------------------------------------------------
+// COPYRIGHT Alejandro Cardenas, acardenas.net, Saltillo,Coah, MX 2013
+// All rights reserved.
+//
+// The Copyright to the computer program(s) herein is the property of
+// Alejandro Raul Cardenas
+// The program(s) may be used and/or copied only with the written
+// permission from Alejandro Cardenas, or in
+// accordance with the terms and conditions stipulated in the
+// agreement/contract under which the program(s) have been supplied.
+// ---------------------------------------------------------------------------
+
 package net.acardenas.accountspayable.entity;
 
 import javax.persistence.Entity;
@@ -20,36 +32,36 @@ import java.util.List;
 public class Event
     extends BaseEntity
 {
-    public final static String ALL = "Event.populateUsers";
-    public final static String TOTAL = "Event.countUsersTotal";
+    public final static String ALL = "Event.allEvents";
+    public final static String TOTAL = "Event.countEventsTotal";
 
     private String name;
     @OneToMany
     @JoinColumn(name = "EVENT_ID")
-    private List<AccountPayable> accountPayables;
+    private List<AccountPayable> accountsPayable;
 
     public String getName()
     {
         return name;
     }
 
-    public void setName(String name)
+    public void setName(String aName)
     {
-        this.name = name;
+        name = aName;
     }
 
-    public List<AccountPayable> getAccountPayables()
+    public List<AccountPayable> getAccountsPayable()
     {
-        if (accountPayables == null)
+        if (accountsPayable == null)
         {
-            accountPayables = new ArrayList<AccountPayable>();
+            accountsPayable = new ArrayList<AccountPayable>();
         }
-        return accountPayables;
+        return accountsPayable;
     }
 
-    public void setAccountPayables(List<AccountPayable> accountPayables)
+    public void setAccountsPayable(List<AccountPayable> anAccountsPayable)
     {
-        this.accountPayables = accountPayables;
+        accountsPayable = anAccountsPayable;
     }
 
     @Override

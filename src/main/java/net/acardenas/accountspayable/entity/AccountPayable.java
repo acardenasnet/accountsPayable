@@ -30,6 +30,7 @@ import java.util.List;
 public class AccountPayable
     extends BaseEntity
 {
+    /** Query name to retrieve all the accounts Payable */
     public final static String ALL = "AccountPayable.populateUsers";
     public final static String TOTAL = "AccountPayable.countUsersTotal";
 

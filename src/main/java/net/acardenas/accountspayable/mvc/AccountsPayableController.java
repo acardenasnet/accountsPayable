@@ -62,7 +62,7 @@ public class AccountsPayableController
     {
         LOG.debug("saveAccountPayable");
         Event myEvent = eventDataservice.find(anEventId);
-        myEvent.getAccountPayables().add(anAccountPayable);
+        myEvent.getAccountsPayable().add(anAccountPayable);
 
         if (anAccountPayable.getId() != null)
         {

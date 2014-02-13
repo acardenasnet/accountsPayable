@@ -35,9 +35,9 @@ public abstract class BaseEntity implements Serializable
         return id;
     }
 
-    public void setId(Integer id)
+    public void setId(Integer anId)
     {
-        this.id = id;
+        id = anId;
     }
 
     @Override

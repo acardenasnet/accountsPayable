@@ -1,6 +1,23 @@
+// ---------------------------------------------------------------------------
+// COPYRIGHT Alejandro Cardenas, acardenas.net, Saltillo,Coah, MX 2013
+// All rights reserved.
+//
+// The Copyright to the computer program(s) herein is the property of
+// Alejandro Raul Cardenas
+// The program(s) may be used and/or copied only with the written
+// permission from Alejandro Cardenas, or in
+// accordance with the terms and conditions stipulated in the
+// agreement/contract under which the program(s) have been supplied.
+// ---------------------------------------------------------------------------
+
 package net.acardenas.accountspayable.entity;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.util.Date;
 
 /**
@@ -29,9 +46,9 @@ public class Payment
         return name;
     }
 
-    public void setName(String name)
+    public void setName(String aName)
     {
-        this.name = name;
+        name = aName;
     }
 
     public String getDescription()
@@ -39,9 +56,9 @@ public class Payment
         return description;
     }
 
-    public void setDescription(String description)
+    public void setDescription(String aDescription)
     {
-        this.description = description;
+        description = aDescription;
     }
 
     public Double getAmount()
@@ -49,9 +66,9 @@ public class Payment
         return amount;
     }
 
-    public void setAmount(Double amount)
+    public void setAmount(Double anAmount)
     {
-        this.amount = amount;
+        amount = anAmount;
     }
 
     public Date getEffectiveDate()
@@ -59,9 +76,9 @@ public class Payment
         return effectiveDate;
     }
 
-    public void setEffectiveDate(Date effectiveDate)
+    public void setEffectiveDate(Date anEffectiveDate)
     {
-        this.effectiveDate = effectiveDate;
+        effectiveDate = anEffectiveDate;
     }
 
     public AccountPayable getAccountPayable()
@@ -69,8 +86,8 @@ public class Payment
         return accountPayable;
     }
 
-    public void setAccountPayable(AccountPayable accountPayable)
+    public void setAccountPayable(AccountPayable anAccountPayable)
     {
-        this.accountPayable = accountPayable;
+        accountPayable = anAccountPayable;
     }
 }
