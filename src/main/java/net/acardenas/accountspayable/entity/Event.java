@@ -32,8 +32,8 @@ import java.util.List;
 public class Event
     extends BaseEntity
 {
-    public final static String ALL = "Event.allEvents";
-    public final static String TOTAL = "Event.countEventsTotal";
+    public static final String ALL = "Event.allEvents";
+    public static final String TOTAL = "Event.countEventsTotal";
 
     private String name;
     @OneToMany
