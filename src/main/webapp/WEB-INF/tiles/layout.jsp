@@ -1,17 +1,4 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%--
-  ~ ---------------------------------------------------------------------------
-  ~    COPYRIGHT Alejandro Cardenas, acardenas.net, Saltillo,Coah, MX 2014.
-  ~    All rights reserved.
-  ~
-  ~    The Copyright to the computer program(s) herein is the property of
-  ~    Alejandro Raul Cardenas
-  ~    The program(s) may be used and/or copied only with the written
-  ~    permission from Alejandro Cardenas, or in
-  ~    accordance with the terms and conditions stipulated in the
-  ~    agreement/contract under which the program(s) have been supplied.
-  ~    ---------------------------------------------------------------------------
-  --%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
