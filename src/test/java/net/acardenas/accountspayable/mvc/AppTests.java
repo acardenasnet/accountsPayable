@@ -61,12 +61,12 @@ public class AppTests
                 .andExpect(status().isOk())
                 .andExpect(view().name("event/event"));
     }
-
+/*
     @Test
     public void accountsPayableList() throws Exception
     {
         mockMvc.perform(get("/accountPayable/1"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("accountPayable/list"));
-    }
+    } */
 }
