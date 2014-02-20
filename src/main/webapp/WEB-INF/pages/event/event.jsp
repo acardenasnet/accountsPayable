@@ -24,18 +24,7 @@
     </c:forEach>
 </table>
 
-<div id="editEvent">
-<form:form action="${path}/event/save" method="post">
-    <form:hidden path="id" />
-    <table>
-        <tr>
-            <td><form:label path="name">name</form:label></td>
-            <td><form:input path="name" /></td>
-        </tr>
-    </table>
-    <input class="button" type="submit" class="add_button" value="save">
-</form:form>
-</div>
+
 </body>
 <script type="text/javascript" src="${pageContext.request.contextPath}/static/jquery-1.11.0.js"></script>
 </html>
