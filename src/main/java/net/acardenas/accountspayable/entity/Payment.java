@@ -18,6 +18,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.util.Date;
@@ -26,9 +28,17 @@ import java.util.Date;
  * Created by acardenas on 1/21/14.
  */
 @Entity
+@NamedQueries
+        ({
+                @NamedQuery(name = Payment.ALL, query = "SELECT p FROM Payment p"),
+                @NamedQuery(name = Payment.TOTAL, query = "SELECT COUNT(p) FROM Payment p")
+        })
 public class Payment
     extends BaseEntity
 {
+    public static final String ALL = "Payments.populateUsers";
+    public static final String TOTAL = "Payments.countUsersTotal";
+
     private String name;
     private String description;
     private Double amount;

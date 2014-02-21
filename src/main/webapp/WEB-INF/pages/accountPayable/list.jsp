@@ -10,7 +10,7 @@
     <tr>
         <th>Name</th>
         <th>Total</th>
-        <th>Account Payable</th>
+        <th>Payment</th>
         <th>edit</th>
         <th>delete</th>
     </tr>

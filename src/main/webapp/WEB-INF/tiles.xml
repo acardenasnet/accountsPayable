@@ -17,6 +17,16 @@
         <put-attribute name="body" value="/WEB-INF/pages/event/{1}.jsp" />
     </definition>
 
+    <definition extends="base.definition" name="accountPayable/*">
+        <put-attribute name="title" value="Account Payable" />
+        <put-attribute name="body" value="/WEB-INF/pages/accountPayable/{1}.jsp" />
+    </definition>
+
+    <definition extends="base.definition" name="payment/*">
+        <put-attribute name="title" value="Payment" />
+        <put-attribute name="body" value="/WEB-INF/pages/payment/{1}.jsp" />
+    </definition>
+
     <definition extends="base.definition" name="login">
         <put-attribute name="title" value="event" />
         <put-attribute name="body" value="/WEB-INF/pages/login.jsp" />

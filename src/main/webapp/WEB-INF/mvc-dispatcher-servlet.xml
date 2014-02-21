@@ -42,7 +42,7 @@
         <property name="jpaPropertyMap">
             <props>
                 <prop key="eclipselink.weaving">false</prop>
-                <prop key="eclipselink.ddl-generation">drop-and-create-tables</prop>
+                <prop key="eclipselink.ddl-generation">create-or-extend-tables</prop>
                 <prop key="eclipselink.create-ddl-jdbc-file-name">createDDL_ddlGeneration.jdbc</prop>
                 <prop key="eclipselink.drop-ddl-jdbc-file-name">dropDDL_ddlGeneration.jdbc</prop>
                 <prop key="eclipselink.ddl-generation.output-mode">both</prop>
