@@ -47,8 +47,9 @@ public class AccountsPayableController
     @RequestMapping("{eventId}")
     public String listAccountsPayable(@PathVariable("eventId") Integer eventId, ModelMap aModelMap)
     {
-        LOG.debug("printList");
+        LOG.debug("listAccountsPayable for Event {}", eventId);
         aModelMap.addAttribute("accountsPayable", accountPayableDataservice.findWithNamedQuery(AccountPayable.ALL));
+        aModelMap.addAttribute("eventId", eventId);
         return "accountPayable/list";
     }
 

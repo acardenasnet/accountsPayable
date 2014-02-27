@@ -33,8 +33,8 @@ public class AccountPayable
     extends BaseEntity
 {
     /** Query name to retrieve all the accounts Payable */
-    public static final String ALL = "AccountPayable.populateUsers";
-    public static final String TOTAL = "AccountPayable.countUsersTotal";
+    public static final String ALL = "AccountPayable.populatedAccountsPayable";
+    public static final String TOTAL = "AccountPayable.countAccountsPayableTotal";
 
     private String name;
     private Double total;

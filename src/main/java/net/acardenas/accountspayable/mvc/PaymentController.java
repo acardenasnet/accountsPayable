@@ -14,9 +14,11 @@
 
 package net.acardenas.accountspayable.mvc;
 
-import net.acardenas.accountspayable.dataservice.api.EventDataservice;
+import java.util.Map;
+
 import net.acardenas.accountspayable.dataservice.api.PaymentDataservice;
 import net.acardenas.accountspayable.entity.Payment;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +27,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.Map;
 
 /**
  * Created by acardenas on 2/20/14.
@@ -37,9 +37,6 @@ public class PaymentController
 {
     @Autowired
     private PaymentDataservice paymentDataservice;
-
-    @Autowired
-    private EventDataservice eventDataservice;
 
     private static final Logger LOG = LoggerFactory.getLogger(PaymentController.class);
 
@@ -54,17 +51,17 @@ public class PaymentController
     @RequestMapping("add")
     public String addPayment(Map<String, Object> map)
     {
-        Payment myAccountPayable = new Payment();
-        map.put("payment", myAccountPayable);
+        Payment myPayment = new Payment();
+        map.put("payment", myPayment);
         return "payment/edit";
     }
 
-    @RequestMapping("edit/{accountPayableId}")
-    public String editAccountPayable(
-            @PathVariable("accountPayableId") Integer anAccountPayableId,
+    @RequestMapping("edit/{paymentId}")
+    public String editPayment(
+            @PathVariable("paymentId") Integer aPaymentId,
             Map<String, Object> map)
     {
-        Payment myAccountPayable = paymentDataservice.find(anAccountPayableId);
+        Payment myAccountPayable = paymentDataservice.find(aPaymentId);
         map.put("accountPayable", myAccountPayable);
         return "accountPayable/edit";
     }
