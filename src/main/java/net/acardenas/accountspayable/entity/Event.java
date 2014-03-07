@@ -14,13 +14,13 @@
 
 package net.acardenas.accountspayable.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by acardenas on 1/25/14.
@@ -34,12 +34,13 @@ import java.util.List;
 public class Event
     extends BaseEntity
 {
-    public static final String ALL = "Event.allEvents";
+
+	private static final long serialVersionUID = -5848441646825081339L;
+	public static final String ALL = "Event.allEvents";
     public static final String TOTAL = "Event.countEventsTotal";
 
     private String name;
-    @OneToMany
-    @JoinColumn(name = "EVENT_ID")
+    @OneToMany( mappedBy = "event")
     private List<AccountPayable> accountsPayable;
 
     public String getName()

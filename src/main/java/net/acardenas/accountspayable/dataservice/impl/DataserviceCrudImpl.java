@@ -40,8 +40,6 @@ public abstract class DataserviceCrudImpl<T, K>
     public void setEntityManager(EntityManager aEntityManager)
     {
         entityManager = aEntityManager;
-        logger.debug("{}", aEntityManager);
-        logger.debug("{}", entityManager);
     }
 
     @Override

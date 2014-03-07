@@ -14,11 +14,14 @@
 
 package net.acardenas.accountspayable.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import java.util.List;
 
 /**
  * Created by acardenas on 1/20/14.
@@ -27,19 +30,26 @@ import java.util.List;
 @NamedQueries
         ({
                 @NamedQuery(name = AccountPayable.ALL, query = "SELECT a FROM AccountPayable a"),
+                @NamedQuery(name = AccountPayable.BY_EVENTS, query = "SELECT a FROM AccountPayable a WHERE event = :event"),                
                 @NamedQuery(name = AccountPayable.TOTAL, query = "SELECT COUNT(a) FROM AccountPayable a")
         })
 public class AccountPayable
     extends BaseEntity
 {
-    /** Query name to retrieve all the accounts Payable */
+
+	private static final long serialVersionUID = 1L;
+	/** Query name to retrieve all the accounts Payable */
     public static final String ALL = "AccountPayable.populatedAccountsPayable";
+    public static final String BY_EVENTS = "AccountPayable.byEvent";
     public static final String TOTAL = "AccountPayable.countAccountsPayableTotal";
 
     private String name;
     private Double total;
     @OneToMany(mappedBy = "accountPayable")
     private List<Payment> payments;
+    @ManyToOne
+    @JoinColumn(name = "EVENT_ID")
+    private Event event;
 
     public AccountPayable()
     {
@@ -76,4 +86,13 @@ public class AccountPayable
         payments = aPayments;
     }
 
+	public Event getEvent() 
+	{
+		return event;
+	}
+
+	public void setEvent(Event anEvent) 
+	{
+		event = anEvent;
+	}
 }

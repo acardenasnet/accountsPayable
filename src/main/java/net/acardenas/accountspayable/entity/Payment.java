@@ -36,7 +36,8 @@ import java.util.Date;
 public class Payment
     extends BaseEntity
 {
-    public static final String ALL = "Payments.populateUsers";
+	private static final long serialVersionUID = 1L;
+	public static final String ALL = "Payments.populateUsers";
     public static final String TOTAL = "Payments.countUsersTotal";
 
     private String name;

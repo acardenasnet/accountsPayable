@@ -3,8 +3,11 @@
 
     <persistence-unit name="accountsPayablePU">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>net.acardenas.accountspayable.entity.AccountPayable</class>
+        <class>net.acardenas.accountspayable.entity.Event</class>
+        <class>net.acardenas.accountspayable.entity.Payment</class>        
         <properties>
             <property name="eclipselink.logging.level" value="FINE" />
-        </properties>
+        </properties>        
     </persistence-unit>
 </persistence>
