@@ -20,7 +20,7 @@ import net.acardenas.accountspayable.entity.Event;
  * Created by acardenas on 2/6/14.
  */
 public interface EventService
+    extends BaseService<Event, Integer>
 {
-    Event createEvent(Event aEvent);
 
 }

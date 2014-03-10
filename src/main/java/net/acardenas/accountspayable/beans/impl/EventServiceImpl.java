@@ -14,9 +14,52 @@
 
 package net.acardenas.accountspayable.beans.impl;
 
+import net.acardenas.accountspayable.beans.api.EventService;
+import net.acardenas.accountspayable.dataservice.api.EventDataservice;
+import net.acardenas.accountspayable.entity.Event;
+
+import java.util.List;
+
 /**
  * Created by acardenas on 2/17/14.
  */
 public class EventServiceImpl
+    implements EventService
 {
+    private EventDataservice eventDataservice;
+
+    public void setEventDataservice(EventDataservice anEventDataservice)
+    {
+        eventDataservice = anEventDataservice;
+    }
+
+    @Override
+    public Event create(Event aEvent)
+    {
+        return eventDataservice.create(aEvent);
+    }
+
+    @Override
+    public Event update(Event aEvent)
+    {
+        return eventDataservice.update(aEvent);
+    }
+
+    @Override
+    public List<Event> getList()
+    {
+        return eventDataservice.findWithNamedQuery(Event.ALL);
+    }
+
+    @Override
+    public Event find(Integer anId)
+    {
+        return eventDataservice.find(anId);
+    }
+
+    @Override
+    public void delete(Integer anId)
+    {
+        eventDataservice.delete(anId);
+    }
 }

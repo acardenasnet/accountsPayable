@@ -14,7 +14,7 @@
 
 package net.acardenas.accountspayable.mvc;
 
-import net.acardenas.accountspayable.dataservice.api.EventDataservice;
+import net.acardenas.accountspayable.beans.api.EventService;
 import net.acardenas.accountspayable.entity.Event;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,14 +33,15 @@ import java.util.Map;
 public class EventController
 {
     @Autowired
-    private EventDataservice eventDataservice;
+    private EventService eventService;
+
     private static final Logger LOG = LoggerFactory.getLogger(EventController.class);
 
     @RequestMapping(method = RequestMethod.GET)
     public String listEvents(ModelMap aModelMap)
     {
         LOG.debug("printList");
-        aModelMap.addAttribute("events", eventDataservice.findWithNamedQuery(Event.ALL));
+        aModelMap.addAttribute("events", eventService.getList());
         return "event/event";
     }
 
@@ -55,7 +56,7 @@ public class EventController
     @RequestMapping("edit/{eventId}")
     public String editEvent(@PathVariable("eventId") Integer eventId, Map<String, Object> map)
     {
-        Event myEvent = eventDataservice.find(eventId);
+        Event myEvent = eventService.find(eventId);
         map.put("event", myEvent);
         return "event/edit";
     }
@@ -65,11 +66,11 @@ public class EventController
     {
         if (aEvent.getId() != null)
         {
-            eventDataservice.update(aEvent);
+            eventService.update(aEvent);
         }
         else
         {
-            eventDataservice.create(aEvent);
+            eventService.create(aEvent);
         }
         return "redirect:/event";
     }
@@ -77,7 +78,7 @@ public class EventController
     @RequestMapping("delete/{eventId}")
     public String deleteEvent(@PathVariable("eventId") Integer eventId)
     {
-        eventDataservice.delete(eventId);
+        eventService.delete(eventId);
         return "redirect:/event";
     }
 }

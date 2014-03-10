@@ -10,7 +10,8 @@
         http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <context:component-scan base-package="net.acardenas.accountspayable.mvc,
-        net.acardenas.accountspayable.dataservice.service"/>
+        net.acardenas.accountspayable.dataservice.service,
+        net.acardenas.accountspayable.beans.service"/>
 
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.UrlBasedViewResolver">

@@ -14,14 +14,13 @@
 
 package net.acardenas.accountspayable.entity;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import java.util.List;
 
 /**
  * Created by acardenas on 1/20/14.
@@ -30,7 +29,7 @@ import javax.persistence.OneToMany;
 @NamedQueries
         ({
                 @NamedQuery(name = AccountPayable.ALL, query = "SELECT a FROM AccountPayable a"),
-                @NamedQuery(name = AccountPayable.BY_EVENTS, query = "SELECT a FROM AccountPayable a WHERE event = :event"),                
+                @NamedQuery(name = AccountPayable.BY_EVENTS, query = "SELECT a FROM AccountPayable a WHERE a.event = :event"),
                 @NamedQuery(name = AccountPayable.TOTAL, query = "SELECT COUNT(a) FROM AccountPayable a")
         })
 public class AccountPayable
