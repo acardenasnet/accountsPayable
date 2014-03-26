@@ -15,6 +15,9 @@
 package net.acardenas.accountspayable.beans.api;
 
 import net.acardenas.accountspayable.entity.AccountPayable;
+import net.acardenas.accountspayable.entity.Event;
+
+import java.util.List;
 
 /**
  * Created by acardenas on 3/9/14.
@@ -22,5 +25,5 @@ import net.acardenas.accountspayable.entity.AccountPayable;
 public interface AccountPayableService
     extends BaseService<AccountPayable, Integer>
 {
-
+    public List<AccountPayable> getList(Event anEvent);
 }

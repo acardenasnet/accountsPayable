@@ -14,12 +14,10 @@
 
 package net.acardenas.accountspayable.mvc;
 
-import java.util.Map;
-
-import net.acardenas.accountspayable.dataservice.api.AccountPayableDataservice;
-import net.acardenas.accountspayable.dataservice.api.EventDataservice;
+import net.acardenas.accountspayable.beans.api.AccountPayableService;
+import net.acardenas.accountspayable.beans.api.EventService;
 import net.acardenas.accountspayable.entity.AccountPayable;
-
+import net.acardenas.accountspayable.entity.Event;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +27,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Map;
+
 /**
  * Created by acardenas on 2/7/14.
  */
@@ -37,10 +37,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AccountsPayableController
 {
     @Autowired
-    private AccountPayableDataservice accountPayableDataservice;
+    private AccountPayableService accountPayableService;
 
     @Autowired
-    private EventDataservice eventDataservice;
+    private EventService eventService;
 
     private static final Logger LOG = LoggerFactory.getLogger(AccountsPayableController.class);
 
@@ -48,9 +48,10 @@ public class AccountsPayableController
     public String listAccountsPayable(@PathVariable("eventId") Integer eventId, ModelMap aModelMap)
     {
         LOG.debug("listAccountsPayable for Event {}", eventId);
+        Event myEvent = eventService.find(eventId);
         AccountPayable myAccountPayable = new AccountPayable();
-        myAccountPayable.setEvent(eventDataservice.find(eventId));
-        aModelMap.addAttribute("accountsPayable", accountPayableDataservice.findWithNamedQuery(AccountPayable.ALL));
+        myAccountPayable.setEvent(myEvent);
+        aModelMap.addAttribute("accountsPayable", accountPayableService.getList(myEvent));
         aModelMap.addAttribute("accountPayable", myAccountPayable);
         return "accountPayable/list";
     }
@@ -68,7 +69,7 @@ public class AccountsPayableController
             @PathVariable("accountPayableId") Integer anAccountPayableId,
             Map<String, Object> map)
     {
-        AccountPayable myAccountPayable = accountPayableDataservice.find(anAccountPayableId);
+        AccountPayable myAccountPayable = accountPayableService.find(anAccountPayableId);
         map.put("accountPayable", myAccountPayable);
         return "accountPayable/edit";
     }
@@ -82,11 +83,11 @@ public class AccountsPayableController
         AccountPayable myAccountPayable = anAccountPayable;
         if (anAccountPayable.getId() != null)
         {
-            accountPayableDataservice.update(anAccountPayable);
+            accountPayableService.update(anAccountPayable);
         }
         else
         {
-            myAccountPayable = accountPayableDataservice.create(anAccountPayable);
+            myAccountPayable = accountPayableService.create(anAccountPayable);
         }
 
 //        eventDataservice.update(myEvent);
@@ -97,9 +98,9 @@ public class AccountsPayableController
     @RequestMapping("delete/{accountPayableId}")
     public String deleteAccountPayable(@PathVariable("accountPayableId") Integer anAccountPayableId)
     {
-    	int myEventiId = accountPayableDataservice.find(anAccountPayableId).getEvent().getId();
-        accountPayableDataservice.delete(anAccountPayableId);
+        int myEventiId = accountPayableService.find(anAccountPayableId).getEvent().getId();
+        accountPayableService.delete(anAccountPayableId);
         return "redirect:/accountPayable/" 
-        		+ myEventiId;
+                + myEventiId;
     }
 }

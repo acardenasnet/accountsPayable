@@ -29,7 +29,8 @@ import java.util.List;
 @NamedQueries
         ({
                 @NamedQuery(name = AccountPayable.ALL, query = "SELECT a FROM AccountPayable a"),
-                @NamedQuery(name = AccountPayable.BY_EVENTS, query = "SELECT a FROM AccountPayable a WHERE a.event = :event"),
+                @NamedQuery(name = AccountPayable.BY_EVENTS, query = "SELECT a FROM AccountPayable a " +
+                        "WHERE a.event = :event"),
                 @NamedQuery(name = AccountPayable.TOTAL, query = "SELECT COUNT(a) FROM AccountPayable a")
         })
 public class AccountPayable
@@ -41,6 +42,8 @@ public class AccountPayable
     public static final String ALL = "AccountPayable.populatedAccountsPayable";
     public static final String BY_EVENTS = "AccountPayable.byEvent";
     public static final String TOTAL = "AccountPayable.countAccountsPayableTotal";
+
+    public static final String EVENT_PARAMETER = "event";
 
     private String name;
     private Double total;

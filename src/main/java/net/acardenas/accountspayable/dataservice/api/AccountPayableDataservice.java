@@ -15,6 +15,9 @@
 package net.acardenas.accountspayable.dataservice.api;
 
 import net.acardenas.accountspayable.entity.AccountPayable;
+import net.acardenas.accountspayable.entity.Event;
+
+import java.util.List;
 
 /**
  * Created by acardenas on 2/7/14.
@@ -22,5 +25,5 @@ import net.acardenas.accountspayable.entity.AccountPayable;
 public interface AccountPayableDataservice
     extends DataserviceCrud<AccountPayable, Integer>
 {
-
+    List<AccountPayable> findByEvent(String aNamedQueryName, Event anEvent);
 }

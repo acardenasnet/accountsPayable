@@ -42,6 +42,11 @@ public abstract class DataserviceCrudImpl<T, K>
         entityManager = aEntityManager;
     }
 
+    protected EntityManager getEntityManager()
+    {
+        return entityManager;
+    }
+
     @Override
     public T create(T t)
     {

@@ -12,56 +12,56 @@
  *    ---------------------------------------------------------------------------
  */
 
-package net.acardenas.accountspayable.beans.impl;
+package net.acardenas.accountspayable.beans.service;
 
 import net.acardenas.accountspayable.beans.api.AccountPayableService;
-import net.acardenas.accountspayable.dataservice.api.AccountPayableDataservice;
 import net.acardenas.accountspayable.entity.AccountPayable;
 import net.acardenas.accountspayable.entity.Event;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
- * Created by acardenas on 3/12/14.
+ * Created by acardenas on 3/26/14.
  */
-public class AccountPayableServiceImpl
+@Service
+public class AccountPayableBean
     implements AccountPayableService
 {
-    private AccountPayableDataservice accountPayableDataservice;
+
+    @Override
+    public List<AccountPayable> getList(Event anEvent)
+    {
+        return null;
+    }
 
     @Override
     public AccountPayable create(AccountPayable anEntity)
     {
-        return accountPayableDataservice.create(anEntity);
+        return null;
     }
 
     @Override
     public AccountPayable update(AccountPayable anEntity)
     {
-        return accountPayableDataservice.update(anEntity);
+        return null;
     }
 
     @Override
     public List<AccountPayable> getList()
     {
-        return accountPayableDataservice.findWithNamedQuery(AccountPayable.ALL);
-    }
-
-    @Override
-    public List<AccountPayable> getList(Event anEvent)
-    {
-        return accountPayableDataservice.findByEvent(AccountPayable.BY_EVENTS, anEvent);
+        return null;
     }
 
     @Override
     public AccountPayable find(Integer anId)
     {
-        return accountPayableDataservice.find(anId);
+        return null;
     }
 
     @Override
     public void delete(Integer anId)
     {
-        accountPayableDataservice.delete(anId);
+
     }
 }

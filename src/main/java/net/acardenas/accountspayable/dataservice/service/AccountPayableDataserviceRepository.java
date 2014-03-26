@@ -17,6 +17,7 @@ package net.acardenas.accountspayable.dataservice.service;
 import net.acardenas.accountspayable.dataservice.api.AccountPayableDataservice;
 import net.acardenas.accountspayable.dataservice.impl.AccountPayableDataserviceImpl;
 import net.acardenas.accountspayable.entity.AccountPayable;
+import net.acardenas.accountspayable.entity.Event;
 import net.acardenas.accountspayable.utils.Log;
 import org.slf4j.Logger;
 import org.springframework.stereotype.Repository;
@@ -100,5 +101,11 @@ public class AccountPayableDataserviceRepository
     public int countTotalRecord(String aNamedQueryName)
     {
         return 0;
+    }
+
+    @Override
+    public List<AccountPayable> findByEvent(String aNamedQueryName, Event anEvent)
+    {
+        return delegate.findByEvent(aNamedQueryName, anEvent);
     }
 }
