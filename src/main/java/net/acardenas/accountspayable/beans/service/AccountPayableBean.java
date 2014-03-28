@@ -15,10 +15,14 @@
 package net.acardenas.accountspayable.beans.service;
 
 import net.acardenas.accountspayable.beans.api.AccountPayableService;
+import net.acardenas.accountspayable.beans.impl.AccountPayableServiceImpl;
+import net.acardenas.accountspayable.dataservice.api.AccountPayableDataservice;
 import net.acardenas.accountspayable.entity.AccountPayable;
 import net.acardenas.accountspayable.entity.Event;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 /**
@@ -28,6 +32,18 @@ import java.util.List;
 public class AccountPayableBean
     implements AccountPayableService
 {
+    private AccountPayableService delegate;
+
+    @Autowired
+    private AccountPayableDataservice accountPayableDataservice;
+
+    @PostConstruct
+    void init()
+    {
+        AccountPayableServiceImpl myAccountPayableService = new AccountPayableServiceImpl();
+        myAccountPayableService.setAccountPayableDataservice(accountPayableDataservice);
+        delegate = myAccountPayableService;
+    }
 
     @Override
     public List<AccountPayable> getList(Event anEvent)

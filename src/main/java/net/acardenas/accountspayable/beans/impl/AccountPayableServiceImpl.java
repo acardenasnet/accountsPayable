@@ -29,6 +29,11 @@ public class AccountPayableServiceImpl
 {
     private AccountPayableDataservice accountPayableDataservice;
 
+    public void setAccountPayableDataservice(AccountPayableDataservice anAccountPayableDataservice1)
+    {
+        accountPayableDataservice = anAccountPayableDataservice1;
+    }
+
     @Override
     public AccountPayable create(AccountPayable anEntity)
     {
