@@ -37,8 +37,8 @@ public class AccountPayable
     extends BaseEntity
 {
 
-	private static final long serialVersionUID = 1L;
-	/** Query name to retrieve all the accounts Payable */
+    private static final long serialVersionUID = 1L;
+    /** Query name to retrieve all the accounts Payable */
     public static final String ALL = "AccountPayable.populatedAccountsPayable";
     public static final String BY_EVENTS = "AccountPayable.byEvent";
     public static final String TOTAL = "AccountPayable.countAccountsPayableTotal";

@@ -14,7 +14,10 @@
 
 package net.acardenas.accountspayable.dataservice.api;
 
+import net.acardenas.accountspayable.entity.AccountPayable;
 import net.acardenas.accountspayable.entity.Payment;
+
+import java.util.List;
 
 /**
  * Created by acardenas on 2/9/14.
@@ -22,5 +25,5 @@ import net.acardenas.accountspayable.entity.Payment;
 public interface PaymentDataservice
     extends DataserviceCrud<Payment, Integer>
 {
-
+    List<Payment> findByAccountPayable(String aNamedQueryName, AccountPayable anAccountPayable);
 }

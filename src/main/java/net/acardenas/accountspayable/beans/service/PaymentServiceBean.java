@@ -14,63 +14,57 @@
 
 package net.acardenas.accountspayable.beans.service;
 
-import net.acardenas.accountspayable.beans.api.AccountPayableService;
-import net.acardenas.accountspayable.beans.impl.AccountPayableServiceImpl;
-import net.acardenas.accountspayable.dataservice.api.AccountPayableDataservice;
+import net.acardenas.accountspayable.beans.api.PaymentService;
+import net.acardenas.accountspayable.beans.impl.PaymentServiceImpl;
 import net.acardenas.accountspayable.entity.AccountPayable;
-import net.acardenas.accountspayable.entity.Event;
-import org.springframework.beans.factory.annotation.Autowired;
+import net.acardenas.accountspayable.entity.Payment;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
 
 /**
- * Created by acardenas on 3/26/14.
+ * Created by acardenas on 4/6/14.
  */
 @Service
-public class AccountPayableBean
-    implements AccountPayableService
+public class PaymentServiceBean
+    implements PaymentService
 {
-    private AccountPayableService delegate;
-
-    @Autowired
-    private AccountPayableDataservice accountPayableDataservice;
+    private PaymentService delegate;
 
     @PostConstruct
     void init()
     {
-        AccountPayableServiceImpl myAccountPayableService = new AccountPayableServiceImpl();
-        myAccountPayableService.setAccountPayableDataservice(accountPayableDataservice);
-        delegate = myAccountPayableService;
+        PaymentServiceImpl myPaymentService = new PaymentServiceImpl();
+        delegate = myPaymentService;
     }
 
     @Override
-    public List<AccountPayable> getList(Event anEvent)
+    public List<Payment> getList(AccountPayable anAccountPayable)
     {
-        return delegate.getList(anEvent);
+        return delegate.getList(anAccountPayable);
     }
 
     @Override
-    public AccountPayable create(AccountPayable anEntity)
+    public Payment create(Payment anEntity)
     {
         return delegate.create(anEntity);
     }
 
     @Override
-    public AccountPayable update(AccountPayable anEntity)
+    public Payment update(Payment anEntity)
     {
         return delegate.update(anEntity);
     }
 
     @Override
-    public List<AccountPayable> getList()
+    public List<Payment> getList()
     {
         return delegate.getList();
     }
 
     @Override
-    public AccountPayable find(Integer anId)
+    public Payment find(Integer anId)
     {
         return delegate.find(anId);
     }

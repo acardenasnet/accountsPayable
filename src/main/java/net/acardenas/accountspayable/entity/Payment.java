@@ -31,14 +31,19 @@ import java.util.Date;
 @NamedQueries
         ({
                 @NamedQuery(name = Payment.ALL, query = "SELECT p FROM Payment p"),
-                @NamedQuery(name = Payment.TOTAL, query = "SELECT COUNT(p) FROM Payment p")
+                @NamedQuery(name = Payment.TOTAL, query = "SELECT COUNT(p) FROM Payment p"),
+                @NamedQuery(name = Payment.BY_ACCOUNT_PAYABLE,
+                    query = "SELECT p FROM Payment p WHERE p.accountPayable = :" + Payment.ACCOUNT_PAYABLE_PARAMETER)
         })
 public class Payment
     extends BaseEntity
 {
-	private static final long serialVersionUID = 1L;
-	public static final String ALL = "Payments.populateUsers";
+    private static final long serialVersionUID = 1L;
+    public static final String ALL = "Payments.populateUsers";
     public static final String TOTAL = "Payments.countUsersTotal";
+    public static final String BY_ACCOUNT_PAYABLE = "Payments.byAccountPayable";
+
+    public static final String ACCOUNT_PAYABLE_PARAMETER = "accountPayable";
 
     private String name;
     private String description;

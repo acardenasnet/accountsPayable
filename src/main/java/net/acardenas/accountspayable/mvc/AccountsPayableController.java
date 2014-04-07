@@ -77,7 +77,7 @@ public class AccountsPayableController
     @RequestMapping("save")
     public String saveAccountPayable(@ModelAttribute("accountPayable") AccountPayable anAccountPayable)
     {
-        LOG.debug("saveAccountPayable");
+        LOG.debug("saveAccountPayable {}", anAccountPayable);
 //        Event myEvent = eventDataservice.find(anEventId);
 //        myEvent.getAccountsPayable().add(anAccountPayable);
         AccountPayable myAccountPayable = anAccountPayable;
@@ -91,7 +91,7 @@ public class AccountsPayableController
         }
 
 //        eventDataservice.update(myEvent);
-        LOG.debug("redirect account {}", anAccountPayable);
+        LOG.debug("redirect account {}", myAccountPayable);
         return "redirect:/accountPayable/" + myAccountPayable.getEvent().getId();
     }
 

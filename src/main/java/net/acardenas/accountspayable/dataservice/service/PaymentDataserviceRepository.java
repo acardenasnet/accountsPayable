@@ -16,6 +16,7 @@ package net.acardenas.accountspayable.dataservice.service;
 
 import net.acardenas.accountspayable.dataservice.api.PaymentDataservice;
 import net.acardenas.accountspayable.dataservice.impl.PaymentDataserviceImpl;
+import net.acardenas.accountspayable.entity.AccountPayable;
 import net.acardenas.accountspayable.entity.Payment;
 import net.acardenas.accountspayable.utils.Log;
 import org.slf4j.Logger;
@@ -98,5 +99,11 @@ public class PaymentDataserviceRepository
     public int countTotalRecord(String aNamedQueryName)
     {
         return delegate.countTotalRecord(aNamedQueryName);
+    }
+
+    @Override
+    public List<Payment> findByAccountPayable(String aNamedQueryName, AccountPayable anAccountPayable)
+    {
+        return delegate.findByAccountPayable(aNamedQueryName, anAccountPayable);
     }
 }

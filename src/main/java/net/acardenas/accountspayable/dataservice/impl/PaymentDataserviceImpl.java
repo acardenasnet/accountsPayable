@@ -15,7 +15,11 @@
 package net.acardenas.accountspayable.dataservice.impl;
 
 import net.acardenas.accountspayable.dataservice.api.PaymentDataservice;
+import net.acardenas.accountspayable.entity.AccountPayable;
 import net.acardenas.accountspayable.entity.Payment;
+
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 /**
  * Created by acardenas on 2/9/14.
@@ -28,5 +32,13 @@ public class PaymentDataserviceImpl
     public Class<Payment> handles()
     {
         return Payment.class;
+    }
+
+    @Override
+    public List<Payment> findByAccountPayable(String aNamedQueryName, AccountPayable anAccountPayable)
+    {
+        TypedQuery<Payment> myQuery = getEntityManager().createNamedQuery(aNamedQueryName, handles());
+        myQuery.setParameter(Payment.ACCOUNT_PAYABLE_PARAMETER, anAccountPayable);
+        return myQuery.getResultList();
     }
 }
