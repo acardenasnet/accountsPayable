@@ -16,7 +16,9 @@ package net.acardenas.accountspayable.mvc;
 
 import java.util.Map;
 
-import net.acardenas.accountspayable.dataservice.api.PaymentDataservice;
+import net.acardenas.accountspayable.beans.api.AccountPayableService;
+import net.acardenas.accountspayable.beans.api.PaymentService;
+import net.acardenas.accountspayable.entity.AccountPayable;
 import net.acardenas.accountspayable.entity.Payment;
 
 import org.slf4j.Logger;
@@ -36,15 +38,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PaymentController
 {
     @Autowired
-    private PaymentDataservice paymentDataservice;
+    private PaymentService paymentService;
+
+    @Autowired
+    private AccountPayableService accountPayableService;
 
     private static final Logger LOG = LoggerFactory.getLogger(PaymentController.class);
 
     @RequestMapping("{accountPaymentId}")
     public String listPayments(@PathVariable("accountPaymentId") Integer accountPaymentId, ModelMap aModelMap)
     {
-        LOG.debug("printList");
-        aModelMap.addAttribute("payments", paymentDataservice.findWithNamedQuery(Payment.ALL));
+        LOG.debug("list payments for {}", accountPaymentId);
+
+        AccountPayable myAccountPayable = accountPayableService.find(accountPaymentId);
+        Payment myPayment = new Payment();
+        myPayment.setAccountPayable(myAccountPayable);
+
+        aModelMap.addAttribute("payments", paymentService.getList(myAccountPayable));
+        aModelMap.addAttribute("payment", myPayment);
         return "payment/list";
     }
 
@@ -61,34 +72,35 @@ public class PaymentController
             @PathVariable("paymentId") Integer aPaymentId,
             Map<String, Object> map)
     {
-        Payment myAccountPayable = paymentDataservice.find(aPaymentId);
+        Payment myAccountPayable = paymentService.find(aPaymentId);
         map.put("accountPayable", myAccountPayable);
         return "accountPayable/edit";
     }
 
-    @RequestMapping("save/{eventId}")
-    public String saveAccountPayable(@PathVariable("eventId") Integer anEventId,
-                                     @ModelAttribute("payment") Payment anAccountPayable)
+    @RequestMapping("save")
+    public String saveAccountPayable(@ModelAttribute("payment") Payment aPayment)
     {
-        LOG.debug("saveAccountPayable");
+        LOG.debug("savePayment");
 
-        if (anAccountPayable.getId() != null)
+        Payment myPayment = aPayment;
+
+        if (aPayment.getId() != null)
         {
-            paymentDataservice.update(anAccountPayable);
+            paymentService.update(aPayment);
         }
         else
         {
-            paymentDataservice.create(anAccountPayable);
+            myPayment = paymentService.create(aPayment);
         }
 
-        LOG.debug("redirect account {}", anAccountPayable);
-        return "redirect:/accountPayable/" + anEventId;
+        LOG.debug("redirect account {}", aPayment);
+        return "redirect:/accountPayable/" + myPayment.getAccountPayable().getId();
     }
 
     @RequestMapping("delete/{accountPayableId}")
     public String deleteAccountPayable(@PathVariable("accountPayableId") Integer anAccountPayableId)
     {
-        paymentDataservice.delete(anAccountPayableId);
+        paymentService.delete(anAccountPayableId);
         return "redirect:/accountPayable/1";
     }
 

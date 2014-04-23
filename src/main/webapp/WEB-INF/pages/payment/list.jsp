@@ -1,8 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<body>
-<a href="<%=request.getContextPath()%>/payment/add">Add</a>
 <table>
     <tr>
         <th>Name</th>
@@ -20,7 +18,7 @@
 </table>
 <div id="add">
 <c:set var="path" value="<%=request.getContextPath()%>"></c:set>
-<form:form action="${path}/payment/save/1" commandName="payment">
+<form:form action="${path}/payment/save" commandName="payment">
     <form:hidden path="id" />
     <form:hidden path="accountPayable.id"/>
     <table>
@@ -38,5 +36,3 @@
     <input class="button" type="submit" class="add_button" value="save"/>
 </form:form>
 </div>
-</body>
-</html>
