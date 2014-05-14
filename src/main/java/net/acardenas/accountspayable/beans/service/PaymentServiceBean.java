@@ -16,8 +16,10 @@ package net.acardenas.accountspayable.beans.service;
 
 import net.acardenas.accountspayable.beans.api.PaymentService;
 import net.acardenas.accountspayable.beans.impl.PaymentServiceImpl;
+import net.acardenas.accountspayable.dataservice.api.PaymentDataservice;
 import net.acardenas.accountspayable.entity.AccountPayable;
 import net.acardenas.accountspayable.entity.Payment;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -32,10 +34,14 @@ public class PaymentServiceBean
 {
     private PaymentService delegate;
 
+    @Autowired
+    private PaymentDataservice paymentDataservice;
+
     @PostConstruct
     void init()
     {
         PaymentServiceImpl myPaymentService = new PaymentServiceImpl();
+        myPaymentService.setPaymentDataservice(paymentDataservice);
         delegate = myPaymentService;
     }
 

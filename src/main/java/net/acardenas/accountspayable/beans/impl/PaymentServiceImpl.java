@@ -37,7 +37,7 @@ public class PaymentServiceImpl
     @Override
     public List<Payment> getList(AccountPayable anAccountPayable)
     {
-        return null;
+        return paymentDataservice.findByAccountPayable(Payment.BY_ACCOUNT_PAYABLE, anAccountPayable);
     }
 
     @Override

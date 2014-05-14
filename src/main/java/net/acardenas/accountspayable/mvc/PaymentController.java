@@ -14,13 +14,10 @@
 
 package net.acardenas.accountspayable.mvc;
 
-import java.util.Map;
-
 import net.acardenas.accountspayable.beans.api.AccountPayableService;
 import net.acardenas.accountspayable.beans.api.PaymentService;
 import net.acardenas.accountspayable.entity.AccountPayable;
 import net.acardenas.accountspayable.entity.Payment;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +26,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.Map;
 
 /**
  * Created by acardenas on 2/20/14.
@@ -78,7 +77,7 @@ public class PaymentController
     }
 
     @RequestMapping("save")
-    public String saveAccountPayable(@ModelAttribute("payment") Payment aPayment)
+    public String savePayment(@ModelAttribute("payment") Payment aPayment)
     {
         LOG.debug("savePayment");
 
@@ -103,5 +102,4 @@ public class PaymentController
         paymentService.delete(anAccountPayableId);
         return "redirect:/accountPayable/1";
     }
-
 }
