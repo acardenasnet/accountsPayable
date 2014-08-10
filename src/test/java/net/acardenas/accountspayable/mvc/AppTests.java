@@ -1,4 +1,18 @@
-package net.acardenas.accountsPayable.mvc;
+/*
+ * ---------------------------------------------------------------------------
+ *  COPYRIGHT Alejandro Cardenas, acardenas.net, Saltillo,Coah, MX 2014.
+ *  All rights reserved.
+ *
+ *  The Copyright to the computer program(s) herein is the property of
+ *  Alejandro Raul Cardenas
+ *  The program(s) may be used and/or copied only with the written
+ *  permission from Alejandro Cardenas, or in
+ *  accordance with the terms and conditions stipulated in the
+ *  agreement/contract under which the program(s) have been supplied.
+ *  ---------------------------------------------------------------------------
+ */
+
+package net.acardenas.accountspayable.mvc;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -18,7 +32,8 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppC
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration("file:src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml")
-public class AppTests {
+public class AppTests
+{
     private MockMvc mockMvc;
 
     @SuppressWarnings("SpringJavaAutowiringInspection")
@@ -26,14 +41,32 @@ public class AppTests {
     protected WebApplicationContext wac;
 
     @Before
-    public void setup() {
+    public void setup()
+    {
         this.mockMvc = webAppContextSetup(this.wac).build();
     }
 
     @Test
-    public void simple() throws Exception {
+    public void simple() throws Exception
+    {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("hello"));
+                .andExpect(view().name("login"));
     }
+
+    @Test
+    public void eventList() throws Exception
+    {
+        mockMvc.perform(get("/event"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("event/event"));
+    }
+
+    @Test
+    public void accountsPayableList() throws Exception
+    {
+        mockMvc.perform(get("/accountPayable/1"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("accountPayable/list"));
+    } 
 }
