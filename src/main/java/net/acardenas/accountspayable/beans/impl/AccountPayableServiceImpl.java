@@ -53,6 +53,12 @@ public class AccountPayableServiceImpl
     }
 
     @Override
+    public List<AccountPayable> readList(int aStart, int anEnd)
+    {
+        return accountPayableDataservice.findWithNamedQuery(AccountPayable.BY_EVENTS, aStart, anEnd);
+    }
+
+    @Override
     public List<AccountPayable> getList(Event anEvent)
     {
         return accountPayableDataservice.findByEvent(AccountPayable.BY_EVENTS, anEvent);
@@ -68,5 +74,11 @@ public class AccountPayableServiceImpl
     public void delete(Integer anId)
     {
         accountPayableDataservice.delete(anId);
+    }
+
+    @Override
+    public int countTotalRecord()
+    {
+        return 0;
     }
 }

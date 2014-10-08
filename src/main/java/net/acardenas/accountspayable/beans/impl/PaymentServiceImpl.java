@@ -59,6 +59,12 @@ public class PaymentServiceImpl
     }
 
     @Override
+    public List<Payment> readList(int aStart, int anEnd)
+    {
+        return null;
+    }
+
+    @Override
     public Payment find(Integer anId)
     {
         return paymentDataservice.find(anId);
@@ -68,5 +74,11 @@ public class PaymentServiceImpl
     public void delete(Integer anId)
     {
         paymentDataservice.delete(anId);
+    }
+
+    @Override
+    public int countTotalRecord()
+    {
+        return 0;
     }
 }

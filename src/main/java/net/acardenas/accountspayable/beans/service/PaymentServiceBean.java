@@ -70,6 +70,12 @@ public class PaymentServiceBean
     }
 
     @Override
+    public List<Payment> readList(int aStart, int anEnd)
+    {
+        return null;
+    }
+
+    @Override
     public Payment find(Integer anId)
     {
         return delegate.find(anId);
@@ -79,5 +85,11 @@ public class PaymentServiceBean
     public void delete(Integer anId)
     {
         delegate.delete(anId);
+    }
+
+    @Override
+    public int countTotalRecord()
+    {
+        return 0;
     }
 }

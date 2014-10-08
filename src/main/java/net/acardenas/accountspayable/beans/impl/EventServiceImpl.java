@@ -52,6 +52,12 @@ public class EventServiceImpl
     }
 
     @Override
+    public List<Event> readList(int aStart, int anEnd)
+    {
+        return eventDataservice.findWithNamedQuery(Event.ALL, aStart, anEnd);
+    }
+
+    @Override
     public Event find(Integer anId)
     {
         return eventDataservice.find(anId);
@@ -61,5 +67,11 @@ public class EventServiceImpl
     public void delete(Integer anId)
     {
         eventDataservice.delete(anId);
+    }
+
+    @Override
+    public int countTotalRecord()
+    {
+        return eventDataservice.countTotalRecord(Event.TOTAL);
     }
 }

@@ -19,6 +19,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
@@ -96,12 +97,17 @@ public abstract class DataserviceCrudImpl<T, K>
     @Override
     public List<T> findWithNamedQuery(String aNamedQueryName, int aStart, int anEnd)
     {
-        return null;
+        TypedQuery<T> myQuery = entityManager.createNamedQuery(aNamedQueryName, handles());
+        myQuery.setMaxResults(anEnd - aStart);
+        myQuery.setFirstResult(aStart);
+        return myQuery.getResultList();
     }
 
     @Override
     public int countTotalRecord(String aNamedQueryName)
     {
-        return 0;
+        Query query = entityManager.createNamedQuery(aNamedQueryName);
+        Number result = (Number) query.getSingleResult();
+        return result.intValue();
     }
 }

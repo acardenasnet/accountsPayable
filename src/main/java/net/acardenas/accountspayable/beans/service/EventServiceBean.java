@@ -63,6 +63,12 @@ public class EventServiceBean
     }
 
     @Override
+    public List<Event> readList(int aStart, int anEnd)
+    {
+        return delegate.readList(aStart, anEnd);
+    }
+
+    @Override
     public Event find(Integer anId)
     {
         return delegate.find(anId);
@@ -72,5 +78,11 @@ public class EventServiceBean
     public void delete(Integer anId)
     {
         delegate.delete(anId);
+    }
+
+    @Override
+    public int countTotalRecord()
+    {
+        return delegate.countTotalRecord();
     }
 }

@@ -70,6 +70,12 @@ public class AccountPayableBean
     }
 
     @Override
+    public List<AccountPayable> readList(int aStart, int anEnd)
+    {
+        return null;
+    }
+
+    @Override
     public AccountPayable find(Integer anId)
     {
         return delegate.find(anId);
@@ -79,5 +85,11 @@ public class AccountPayableBean
     public void delete(Integer anId)
     {
         delegate.delete(anId);
+    }
+
+    @Override
+    public int countTotalRecord()
+    {
+        return 0;
     }
 }

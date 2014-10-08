@@ -27,7 +27,11 @@ public interface BaseService<T, K>
 
     List<T> getList();
 
+    List<T> readList(int aStart, int anEnd);
+
     T find(K anId);
 
     void delete(K anId);
+
+    int countTotalRecord();
 }
