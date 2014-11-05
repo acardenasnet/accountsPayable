@@ -18,7 +18,7 @@
                     <f:facet name="header">
                         <h:outputText value="Name" />
                     </f:facet>
-                    <p:commandLink value="#{event.name}" update=":userDetailForm:display" oncomplete="userDialog.show()"  title="View">
+                    <p:commandLink value="#{event.name}" update=":userDetailForm:display" oncomplete="PF('userDialog').show()"  title="View">
                         <f:setPropertyActionListener value="#{event}" target="#{eventBean.selectedEntity}" />
                     </p:commandLink>
                 </p:column>
@@ -31,34 +31,14 @@
         </h:form>
 
 
-        <p:dialog header="User Detail" widgetVar="userDialog" resizable="false" id="userDlg" >
+        <p:dialog header="Event Detail" widgetVar="userDialog" resizable="false" id="userDlg" >
             <h:form id="userDetailForm">
                 <p:panelGrid id="display" columns="2" cellpadding="4" style="margin:0 auto;">
-                    <h:outputText value="Username :"></h:outputText>
-                    <h:outputText value="#{userBean.selectedUser.username}" />
+                    <h:outputText value="Name :"></h:outputText>
+                    <h:outputText value="#{eventBean.selectedEntity.name}" />
 
-                    <h:outputText value="First name :"></h:outputText>
-                    <h:inputText value="#{userBean.selectedUser.firstname}" required="true" requiredMessage="Please Enter Name!"/>
-
-                    <h:outputText value="Last name :"></h:outputText>
-                    <h:inputText value="#{userBean.selectedUser.lastname}" required="true" requiredMessage="Please Enter Lastname!"/>
-
-                    <h:outputText value="Email :"></h:outputText>
-                    <h:inputText value="#{userBean.selectedUser.email}"/>
-
-                    <h:outputText value="Street Name :"></h:outputText>
-                    <h:inputText value="#{userBean.selectedUser.address.street}"/>
-
-                    <h:outputText value="Suburb :"></h:outputText>
-                    <h:inputText value="#{userBean.selectedUser.address.suburb}"/>
-
-                    <h:outputText value="City :"></h:outputText>
-                    <h:inputText value="#{userBean.selectedUser.address.city}"/>
-
-                    <h:outputText value="Country :"></h:outputText>
-                    <h:inputText value="#{userBean.selectedUser.address.country}" />
                     <f:facet name="footer">
-                        <p:commandButton value="Update" update=":form:dataTable, :growl"  oncomplete="handleSubmitRequest(xhr, status, args, 'userDlg','newUserForm'); " actionListener="#{userBean.doUpdateUser}"/>
+                        <p:commandButton value="Update" update=":form:dataTable, :growl"  oncomplete="handleSubmitRequest(xhr, status, args, PF('userDlg'),'newUserForm'); " actionListener="#{userBean.doUpdateUser}"/>
                     </f:facet>
                 </p:panelGrid>
             </h:form>
@@ -89,7 +69,7 @@
         } else {
             clearForm(formName);
             PF('newUserDialog').hide();
-            userDialog.hide(); 
+            PF('userDialog').hide();
         }  
     }
     function clearForm(formName){
